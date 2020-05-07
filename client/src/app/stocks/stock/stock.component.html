@@ -1,0 +1,77 @@
+<link href="node_modules/@angular/material/prebuilt-themes/indigo-pink.css" rel="stylesheet">
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content">
+        <div class="row">
+          <div class="col s5">
+            <form #stockForm="ngForm" (ngSubmit)="onSubmit(stockForm)">
+              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="stockService.selectedStock._id">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="name" #name="ngModel" [(ngModel)]="stockService.selectedStock.name" placeholder="Enter first name" required>
+                  <label>Name :
+                    <label class="red-text">*</label>
+                  </label>
+                </div>
+              </div>
+              <label id="law"> Distribution Law
+                <label class="red-text">*</label>
+              </label>
+              <div class="row">
+                <div class="input-field col s12">
+                  <select name='distribution_law' #name="ngModel" [(ngModel)]="stockService.selectedStock.distribution_law" required>
+                    <option value=""> Select the law </option>
+                    <option value="binominal"> Binominal </option>
+                    <option value="normal"> Normal </option>
+                    <option value="uniform"> Uniform </option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="start_price" #name="ngModel" [(ngModel)]="stockService.selectedStock.start_price" placeholder="Eg: 3000" required>
+                  <label>Start price:
+                    <label class="red-text">*</label>
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <button class="btn btn-custom right" type="button" (click)="resetForm(stockForm)">Reset</button>
+                  <button class="btn btn-custom right" type="submit" [disabled]="!stockForm.valid">Submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col s7">
+              <table class="responsive-table highlight">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Distribution Law</th>
+                      <th>Price</th>
+                      <th>Edit/Remove </th>
+                    </tr>
+                  </thead>
+                  <tr *ngFor="let stock of stockService.stocks">
+                    <td>{{stock.name}}</td>
+                    <td>{{stock.distribution_law}}</td>
+                    <td>{{stock.start_price}}</td>
+                    <td>
+                        <a class="action-btn" id="edit" (click)="onEdit(stock)">
+                          <i class="material-icons">edit</i>
+                        </a>
+                        <a class="action-btn" id="delete" (click)="onDelete(stock._id,stockForm)">
+                          <i class="material-icons">delete</i>
+                        </a>
+                      </td>
+                  </tr>
+                </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

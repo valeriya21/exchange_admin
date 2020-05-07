@@ -1,0 +1,67 @@
+form div.input-field input{
+  padding-left: 15px !important;
+  color: #25a297;
+}
+
+.card-content {
+  background-color: lavender;
+}
+
+input.ng-invalid.ng-dirty{
+  border-bottom-color : #e91e63 !important;
+  box-shadow: 0 1px 0 0 #e91e63 !important;
+}
+
+
+::placeholder {
+  color: lightslategray;
+
+}
+
+.input-field>label{
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: black;
+}
+
+table {
+  color: black;
+}
+
+.btn-custom,.btn-custom:hover,.btn-custom:focus{
+  background-color: transparent;
+  font-size: 1.1rem;
+  margin : 0px 5px;
+  border: #fff solid 1px ;
+  text-transform:none;
+}
+
+
+
+.vl {
+  border-left: 2px solid black;
+  height: 400px;
+}
+
+#edit {
+  color: orange;
+}
+
+#delete {
+  color: red;
+}
+
+a.action-btn{
+  margin: 0px 5px;
+
+}
+a.action-btn:hover{
+  cursor: pointer;
+}
+
+#toast-container {
+  top: auto !important;
+  right: auto !important;
+  bottom: 10%;
+  left:7%;
+}

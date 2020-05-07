@@ -1,0 +1,71 @@
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content">
+        <div class="row">
+          <div class="col s5">
+            <form #brokerForm="ngForm" (ngSubmit)="onSubmit(brokerForm)">
+              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="brokerService.selectedBroker._id">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="first_name" #name="ngModel" [(ngModel)]="brokerService.selectedBroker.first_name" placeholder="Enter first name" required>
+                  <label>First Name :
+                    <label class="red-text">*</label>
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="last_name" #name="ngModel" [(ngModel)]="brokerService.selectedBroker.last_name" placeholder="Enter last name" required>
+                  <label>Last Name :
+                    <label class="red-text">*</label>
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="balance" #name="ngModel" [(ngModel)]="brokerService.selectedBroker.balance" placeholder="Eg: 3000" required>
+                  <label>Balance :
+                    <label class="red-text">*</label>
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <button class="btn btn-custom right" type="button" (click)="resetForm(brokerForm)">Reset</button>
+                  <button class="btn btn-custom right" type="submit" [disabled]="!brokerForm.valid">Submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col s7">
+              <table class="responsive-table highlight">
+                  <thead>
+                    <tr>
+                      <th>First name</th>
+                      <th>Last name</th>
+                      <th>Balance</th>
+                      <th>Edit/Remove </th>
+                    </tr>
+                  </thead>
+                  <tr *ngFor="let broker of brokerService.brokers">
+                    <td>{{broker.first_name}}</td>
+                    <td>{{broker.last_name}}</td>
+                    <td>{{broker.balance}}</td>
+                    <td>
+                        <a class="action-btn" id="edit" (click)="onEdit(broker)">
+                          <i class="material-icons">edit</i>
+                        </a>
+                        <a class="action-btn" id="delete" (click)="onDelete(broker._id,brokerForm)">
+                          <i class="material-icons">delete</i>
+                        </a>
+                      </td>
+                  </tr>
+                </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
